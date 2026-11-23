@@ -1,0 +1,24 @@
+{
+  "name": "websocket",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/ws": "^8.18.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "db": "*",
+    "jsonwebtoken": "^9.0.3",
+    "ws": "^8.22.0",
+    "dotenv": "^18.0.5"
+  },
+  "scripts": {
+    "dev": "bun --hot index.ts",
+    "start": "bun index.ts"
+  }
+}

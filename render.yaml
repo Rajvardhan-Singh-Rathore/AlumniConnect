@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: collegeplatform-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - { key: APP, value: backend }
+      - { key: DATABASE_URL, sync: false }
+      - { key: JWT_PASSWORD, sync: false }
+      - { key: ADMIN_SIGNUP_KEY, sync: false }
+      - { key: CORS_ORIGIN, sync: false }   # your Vercel URL, e.g. https://xyz.vercel.app
+      - { key: APP_URL, sync: false }       # same Vercel URL
+      - { key: WS_INTERNAL_URL, sync: false } # https://collegeplatform-ws.onrender.com/internal/notify
+  - type: web
+    name: collegeplatform-ws
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - { key: APP, value: websocket }
+      - { key: DATABASE_URL, sync: false }
+      - { key: JWT_PASSWORD, sync: false }

@@ -1,6 +1,8 @@
 const host = typeof window !== "undefined" ? window.location.hostname : "localhost";
-export const API_URL = `${window.location.protocol}//${host}:4000/api/v1`;
-export const WS_URL = `${window.location.protocol === "https:" ? "wss" : "ws"}://${host}:3001`;
+import { PROD_API_URL, PROD_WS_URL } from "./config";
+const isLocal = /^(localhost|127\.|192\.168\.|10\.)/.test(host);
+export const API_URL = isLocal ? `${window.location.protocol}//${host}:4000/api/v1` : `${PROD_API_URL}/api/v1`;
+export const WS_URL = isLocal ? `${window.location.protocol === "https:" ? "wss" : "ws"}://${host}:3001` : PROD_WS_URL;
 
 export type AuthUser = { id: string; name: string; email: string; role: "STUDENT" | "ALUMNI" | "ADMIN" };
 
